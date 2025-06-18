@@ -1,4 +1,0 @@
-"0","url_datos <- ""https://raw.githubusercontent.com/ea-analisisdatos/unir/refs/heads/main/datos/tourism_dataset_5000.csv"""
-"0","datos <- read_csv(url_datos)"
-"0","datos <- janitor::clean_names(datos)"
-"0","View(datos) # Visualiza el dataframe sin notación científica"

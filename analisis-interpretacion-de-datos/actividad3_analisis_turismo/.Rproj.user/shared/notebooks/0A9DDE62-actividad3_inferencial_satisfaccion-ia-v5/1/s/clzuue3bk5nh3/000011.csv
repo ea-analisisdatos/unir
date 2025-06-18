@@ -1,3 +1,0 @@
-"0","datos %>%"
-"0","  group_by(grupo) %>%"
-"0","  summarise(media = mean(satisfaction), sd = sd(satisfaction), n = n())"

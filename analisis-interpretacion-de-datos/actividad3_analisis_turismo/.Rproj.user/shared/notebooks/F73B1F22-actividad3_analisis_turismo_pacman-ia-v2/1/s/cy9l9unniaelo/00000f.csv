@@ -1,3 +1,0 @@
-"0","# Limpiar los nombres de las columnas con clean_names "
-"0","datos <- datos %>% janitor::clean_names()"
-"0",""

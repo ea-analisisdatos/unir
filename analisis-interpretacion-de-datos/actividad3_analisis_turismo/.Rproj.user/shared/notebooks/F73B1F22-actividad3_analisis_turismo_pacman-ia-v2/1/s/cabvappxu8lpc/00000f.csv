@@ -1,7 +1,0 @@
-"0","# Instalar pacman si no está disponible"
-"0","if (!requireNamespace(""pacman"", quietly = TRUE)) install.packages(""pacman"")"
-"0",""
-"0","# Usar pacman para instalar y cargar todos los paquetes requeridos"
-"0","pacman::p_load("
-"0","  tidyverse, skimr, ggplot2, readr, kableExtra, janitor"
-"0",")"

@@ -1,2 +1,0 @@
-"0","datos <- janitor::clean_names(datos)"
-"0","head(datos, 5)"

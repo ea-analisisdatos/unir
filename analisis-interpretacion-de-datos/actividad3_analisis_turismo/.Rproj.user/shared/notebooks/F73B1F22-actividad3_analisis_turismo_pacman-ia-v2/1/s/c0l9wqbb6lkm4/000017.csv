@@ -1,8 +1,0 @@
-"0","# URL del dataset publicado por la autora en GitHub"
-"0","url_datos <- ""https://raw.githubusercontent.com/ea-analisisdatos/unir/refs/heads/main/datos/tourism_dataset_5000.csv"""
-"0",""
-"0","# Leer el archivo CSV desde la URL"
-"0","datos <- read_csv(url_datos)"
-"0",""
-"0","# Mostrar primeras filas"
-"0","head(datos)"

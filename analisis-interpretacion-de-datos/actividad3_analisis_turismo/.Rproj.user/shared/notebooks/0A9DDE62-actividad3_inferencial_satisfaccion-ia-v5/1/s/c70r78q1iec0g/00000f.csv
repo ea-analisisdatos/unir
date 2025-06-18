@@ -1,0 +1,2 @@
+"0","if (!require(""pacman"")) install.packages(""pacman"")"
+"0","pacman::p_load(tidyverse, skimr, kableExtra, janitor, modeest, raster, moments, ggcorrplot, read_csv, ggplot2, dplyr, devtools, stringr)"

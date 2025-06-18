@@ -1,0 +1,3 @@
+"0","options(scipen = 999)  # Desactiva la notación científica"
+"0","#options(scipen = 0)  # Restaura la notación científica a su configuración predeterminada"
+"0",""

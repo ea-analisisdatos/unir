@@ -1,0 +1,6 @@
+"0","tabla_variables <- tibble("
+"0","  Variable = names(datos),"
+"0","  Tipo = sapply(datos, function(x) class(x)[1])"
+"0",")"
+"0","kable(tabla_variables, format = ""html"", caption = ""Tipos de variables"") %>%"
+"0","  kable_styling(full_width = FALSE, bootstrap_options = c(""striped"", ""hover"", ""condensed""))"

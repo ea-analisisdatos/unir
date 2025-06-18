@@ -1,0 +1,13 @@
+{
+    "sortOrder": [
+        {
+            "columnIndex": 2,
+            "ascending": true
+        },
+        {
+            "columnIndex": 3,
+            "ascending": false
+        }
+    ],
+    "path": "~/github/unir/analisis-interpretacion-de-datos/Actividad3/actividad3_analisis_turismo/imagenes"
+}

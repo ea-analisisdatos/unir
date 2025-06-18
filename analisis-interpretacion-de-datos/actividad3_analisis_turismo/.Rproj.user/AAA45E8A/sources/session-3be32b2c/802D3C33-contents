@@ -1,0 +1,130 @@
+---
+title: "Actividad 3 - Análisis Inferencial de la Satisfacción Turística"
+author: "Erika Samara Alvares Angelim"
+date: "`r format(Sys.Date(), '%d de %B de %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    theme: flatly
+    highlight: textmate
+    df_print: paged
+editor_options:
+  markdown:
+    wrap: 72
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Introducción
+
+Este cuaderno de trabajo en RMarkdown desarrolla el análisis inferencial requerido para la Actividad 3 del Laboratorio de Estadística. Se abordarán dos problemas aplicando contrastes de hipótesis, apoyados en visualizaciones y pruebas estadísticas realizadas en R.
+
+# 1. Carga de paquetes necesarios
+
+```{r paquetes, message=FALSE}
+paquetes <- c("tidyverse", "skimr", "ggplot2", "readr", "kableExtra")
+
+instalar <- paquetes[!(paquetes %in% installed.packages()[,"Package"])]
+if(length(instalar)) install.packages(instalar)
+
+lapply(paquetes, library, character.only = TRUE)
+```
+
+# 2. Importación del dataset
+
+```{r importar-datos}
+url_datos <- "https://raw.githubusercontent.com/ea-analisisdatos/unir/refs/heads/main/datos/tourism_dataset_5000.csv"
+datos <- read_csv(url_datos)
+```
+
+```{r ver-estructura}
+glimpse(datos)
+```
+
+# 3. Exploración inicial
+
+```{r exploracion-inicial}
+skim(datos)
+summary(datos)
+```
+
+# 4. Problema 1: ¿La satisfacción media supera el umbral de 7?
+
+## 4.1 Formulación del contraste
+
+- H₀: μ ≤ 7 (la media de satisfacción no supera el valor considerado positivo)
+- H₁: μ > 7 (la media de satisfacción es superior a 7)
+
+## 4.2 Análisis descriptivo
+
+```{r descriptiva-p1}
+datos %>%
+  select(satisfaction) %>%
+  summary()
+```
+
+```{r grafico-histograma-p1}
+ggplot(datos, aes(x = satisfaction)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white") +
+  geom_vline(xintercept = 7, linetype = "dashed", color = "red") +
+  labs(title = "Distribución de la satisfacción turística",
+       x = "Puntuación de satisfacción", y = "Frecuencia")
+```
+
+## 4.3 Contraste de hipótesis
+
+```{r contraste-media}
+t.test(datos$satisfaction, mu = 7, alternative = "greater")
+```
+
+# 5. Problema 2: ¿Difieren turistas nacionales vs internacionales?
+
+## 5.1 Preparación y agrupación
+
+```{r crear-grupos}
+datos <- datos %>%
+  mutate(grupo = ifelse(country == "Kenya", "Nacional", "Internacional"))
+```
+
+```{r resumen-por-grupo}
+datos %>%
+  group_by(grupo) %>%
+  summarise(
+    media = mean(satisfaction, na.rm = TRUE),
+    sd = sd(satisfaction, na.rm = TRUE),
+    n = n()
+  )
+```
+
+## 5.2 Visualización comparativa
+
+```{r boxplot-grupos}
+ggplot(datos, aes(x = grupo, y = satisfaction, fill = grupo)) +
+  geom_boxplot() +
+  labs(title = "Comparación de satisfacción por tipo de turista",
+       x = "Grupo", y = "Satisfacción")
+```
+
+## 5.3 Contraste de hipótesis (dos muestras)
+
+```{r contraste-grupos}
+t.test(satisfaction ~ grupo, data = datos, var.equal = FALSE)
+```
+
+# 6. Conclusiones
+
+- Se han analizado dos escenarios mediante contrastes de hipótesis.
+- Se utilizaron herramientas gráficas y descriptivas para explorar los datos.
+- Las pruebas t permitieron validar estadísticamente las hipótesis planteadas.
+- Los resultados se integrarán en el informe académico.
+
+# 7. Referencias
+
+- Boone, H. N., & Boone, D. A. (2012). Analyzing Likert Data. *Journal of Extension*.
+- Joshi, A., Kale, S., Chandel, S., & Pal, D. K. (2015). Likert Scale: Explored and Explained. *British Journal of Applied Science & Technology*.
+- Montgomery, D. C., & Runger, G. C. (2014). *Probabilidad y estadística aplicada a la ingeniería*. Wiley.

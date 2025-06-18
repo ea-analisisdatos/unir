@@ -1,0 +1,25 @@
+"0","skim(datos)"
+"1","── Data Summary ────────────────────────
+"
+"1","                           Values
+"
+"1","Name                       datos 
+"
+"1","Number of rows             5000  
+"
+"1","Number of columns          14    
+"
+"1","_______________________          
+"
+"1","Column type frequency:           
+"
+"1","  character                3     
+"
+"1","  logical                  1     
+"
+"1","  numeric                  10    
+"
+"1","________________________         
+"
+"1","Group variables            None  
+"

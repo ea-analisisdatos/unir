@@ -1,0 +1,2 @@
+"0","if (!requireNamespace(""pacman"", quietly = TRUE)) install.packages(""pacman"")"
+"0","pacman::p_load(tidyverse, skimr, ggplot2, readr, kableExtra, janitor, GGally, dplyr, devtools, stringr, randomForest)"

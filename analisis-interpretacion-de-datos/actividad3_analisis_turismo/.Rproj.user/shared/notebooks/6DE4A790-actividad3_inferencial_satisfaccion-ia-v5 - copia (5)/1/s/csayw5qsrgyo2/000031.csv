@@ -1,0 +1,5 @@
+"0","ggplot(intereses_limpios, aes(x = reorder(interests, n), y = n)) +"
+"0","  geom_col(fill = ""steelblue"") +"
+"0","  coord_flip() +"
+"0","  labs(title = ""Frecuencia de intereses turísticos"", x = ""Interés"", y = ""Frecuencia"")"
+"0",""

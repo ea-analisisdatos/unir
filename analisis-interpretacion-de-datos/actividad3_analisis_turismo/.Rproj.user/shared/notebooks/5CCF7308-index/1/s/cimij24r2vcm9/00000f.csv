@@ -1,0 +1,7 @@
+"0","ggplot(datos, aes(x = reorder(as.factor(round(tourist_rating, 1)), tourist_rating))) +"
+"0","  geom_bar(fill = ""skyblue"", width = 0.7) +"
+"0","  labs(title = ""Distribución de Tourist Rating"","
+"0","       x = ""Tourist Rating (redondeado)"","
+"0","       y = ""Frecuencia"") +"
+"0","  theme_minimal() +"
+"0","  theme(axis.text.x = element_text(angle = 45, hjust = 1))"

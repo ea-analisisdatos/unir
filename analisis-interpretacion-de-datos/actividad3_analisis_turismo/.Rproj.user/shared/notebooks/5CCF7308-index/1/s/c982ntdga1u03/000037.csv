@@ -1,0 +1,4 @@
+"0",""
+"0","# Guardar la gráfica en archivo PNG"
+"0","ggsave(""histograma-satisfaccion.png"", width = 8, height = 5, dpi = 300)"
+"0",""

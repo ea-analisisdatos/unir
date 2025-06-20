@@ -1,0 +1,256 @@
+---
+title: 
+date:
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    theme: flatly
+    highlight: textmate
+    df_print: paged
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+
+::: {style="text-align: center;"}
+![](https://lh3.googleusercontent.com/BLXjkjN6eamGIijhqBGH24JHAUaRIKXDY0V1s0n1VD2931EHhn2nCRyMp4iAMjrCmSmmF2qoBxKV4_J45PqpN_M2ULfqB6k8yRuYaL-PlTtnMWLIxvhsiLc408JU2Fm2vnMjZFiNcsA=w16383){alt="Logo UNIR"}
+
+<h1>Análisis Inferencial de la Satisfacción Turística</h1>
+
+<h4>Alumna: Erika Samara Alvares Angelim</h4>
+
+<h4>Profesor: Gustavo Néstor Fontana Riera</h4>
+
+<h4>Asignatura: Análisis e Interpretación de Datos</h4>
+
+<h4>Fecha: `r format(Sys.Date(), '%d de %B de %Y')`</h4>
+:::
+
+
+
+
+# Configurar ambiente de trabajo
+
+```{r configura_notacion_cientifica}
+options(scipen = 999)  # Desactiva la notación científica
+#options(scipen = 0)  # Restaura la notación científica a su configuración predeterminada
+
+```
+
+# Instalar y Cargar paquetes necesarios
+
+```{r intalar_paquets_pacman, include=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, skimr, kableExtra, janitor, modeest, raster, moments, ggcorrplot)
+```
+```
+
+# Cargar y preparar el dataset
+
+```{r cargar-datos}
+url_datos <- "https://raw.githubusercontent.com/ea-analisisdatos/unir/refs/heads/main/datos/tourism_dataset_5000.csv"
+datos <- read_csv(url_datos)
+datos <- janitor::clean_names(datos)
+View(datos) # Visualiza el dataframe sin notación científica
+```
+
+
+```{r tipo_variable_tabla_html_kable1}
+tabla_variables <- tibble(
+  Variable = names(datos),
+  Tipo = sapply(datos, function(x) class(x)[1])
+)
+kable(tabla_variables, format = "html", caption = "Tipos de variables del dataset de turismo") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+# Limpieza y verificación
+
+```{r valores-nulos}
+colSums(is.na(datos))
+```
+
+```{r resumen-skim}
+skim(datos)
+
+```
+
+```{r}
+X = datos$satisfaction
+
+#### Medidas de Centralización
+mean(X) #sum(X)/length(X) # Otra manera de obtener el promedio
+median(X)
+mfv(X) #mfv es la moda
+quantile(X)
+```
+
+```{r}
+### ESTADISTICOS
+mean(datos)
+max(datos$satisfaction)
+median(datos$satisfaction)
+min(datos$satisfaction)
+range(datos$satisfaction)
+quantile(datos$satisfaction)
+IQR(datos$satisfaction)
+var(datos$satisfaction)
+sd(datos$satisfaction)
+```
+
+```{r}
+### Medidas de Dispersión
+var(X) #varianza es cuanto los valores se desplazan con base a la media, siempre será un numero positivo porque estos valores se elevan al cuadrado
+sd(X) #desviación tipica se vuelve a dimensión original se quita el cuadrado que hemos usado en la variaza. 
+cv(X) #coeficiente de variación
+
+```
+
+```{r medidas_de_asimetria}
+### Medidas de Asimetría
+skewness(X) #Aimetría
+kurtosis(X)
+
+```
+
+```{r calcula_promedio_todas_columnas_numericas_y_rendondea_2_casas_decimales}
+## Calcular el promedio de todas las columnas numéricas al mismo tiempo y redondear a 2 decimales
+
+# Paso 1: Seleccionar solo las columnas numéricas del dataframe
+df_numeric <- datos[sapply(datos, is.numeric)]
+# Paso 2: Calcular el promedio de cada columna numérica
+means <- sapply(df_numeric, mean, na.rm = TRUE)
+# Paso 3: Redondear los promedios a 2 decimales
+means_rounded <- round(means, 2)
+# Ver el resultado final
+means_rounded
+```
+
+```{r}
+colnames(datos)
+```
+
+```{r}
+as_tibble(datos)
+```
+
+```{r}
+
+par(mfrow = c(1,1))
+hist(X)
+```
+
+# Parte 1 - Satisfacción media general
+
+Pregunta: ¿La satisfacción media supera el valor de 7?
+
+Formulación del contraste:
+
+H₀: μ ≤ 7 (satisfacción promedio no supera el valor positivo)
+
+H₁: μ \> 7 (satisfacción promedio es significativamente superior a 7)
+
+## Descripción y visualización
+
+```{r descriptiva-satisfaccion}
+summary(datos$satisfaction)
+```
+
+```{r histograma-satisfaccion}
+ggplot(datos, aes(x = satisfaction)) +
+  geom_histogram(bins = 15, fill = "steelblue", color = "white") +
+  geom_vline(xintercept = 7, linetype = "dashed", color = "red") +
+  labs(title = "Distribución de la satisfacción turística", x = "Satisfacción", y = "Frecuencia")
+```
+
+## Contraste de hipótesis (una muestra)
+
+```{r ttest-1}
+t.test(datos$satisfaction, mu = 7, alternative = "greater")
+```
+
+# Parte 2: Comparación por Accesibilidad
+
+Pregunta: Comparación entre turistas con y sin accesibilidad
+
+Planteamiento del contraste:
+
+H₀: μ₁ = μ₂ (no hay diferencia entre grupos)
+
+H₁: μ₁ ≠ μ₂ (hay diferencia entre grupos con y sin accesibilidad)
+
+## Crear grupos y explorar
+
+```{r crear-grupo}
+datos <- datos %>%
+  mutate(grupo = ifelse(accessibility, "Accesibilidad", "Sin Accesibilidad"))
+```
+
+```{r resumen-grupo}
+datos %>%
+  group_by(grupo) %>%
+  summarise(media = mean(satisfaction), sd = sd(satisfaction), n = n())
+```
+
+## Visualización
+
+```{r boxplot-grupos}
+ggplot(datos, aes(x = grupo, y = satisfaction, fill = grupo)) +
+  geom_boxplot() +
+  labs(title = "Satisfacción según accesibilidad", x = "Grupo", y = "Satisfacción")
+```
+
+## Contraste de hipótesis (dos grupos)
+
+```{r ttest-2}
+t.test(satisfaction ~ grupo, data = datos)
+```
+
+# Análisis multivariable complementario
+
+```{r mapa-calor-correlaciones, fig.width=7, fig.height=6}
+# Cargar librería
+library(ggcorrplot)
+
+# Seleccionar solo variables numéricas
+datos_numeric <- datos %>% select_if(is.numeric)
+
+# Calcular la matriz de correlación
+cor_matrix <- cor(datos_numeric, use = "complete.obs")
+
+# Mapa de calor de las correlaciones
+ggcorrplot(cor_matrix,
+           hc.order = TRUE,
+           type = "lower",
+           lab = TRUE,
+           lab_size = 2.5,
+           colors = c("tomato2", "white", "springgreen3"),
+           title = "Mapa de calor de correlaciones",
+           ggtheme = theme_minimal())
+
+
+```
+
+# Guardar dataset limpio
+
+```{r exportar}
+write_csv(datos, "tourism_dataset_5000_limpio.csv")
+```
+
+# Referencias
+
+-   Boone, H. N., & Boone, D. A. (2012). *Analyzing Likert Data*.
+    Journal of Extension.\
+-   Joshi, A., Kale, S., Chandel, S., & Pal, D. K. (2015). *Likert
+    Scale: Explored and Explained*. British Journal of Applied Science &
+    Technology.\
+-   Montgomery, D. C., & Runger, G. C. (2014). *Probabilidad y
+    estadística aplicada a la ingeniería*. Wiley.

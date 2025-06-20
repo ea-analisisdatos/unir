@@ -1,0 +1,5 @@
+"0","ggplot(tabla_interes_satisfaccion, aes(x = reorder(interests, media_satisfaccion), y = media_satisfaccion)) +"
+"0","  geom_col(fill = ""forestgreen"") +"
+"0","  coord_flip() +"
+"0","  labs(title = ""Satisfacción media por tipo de interés"", x = ""Interés"", y = ""Media de satisfacción"")"
+"0",""

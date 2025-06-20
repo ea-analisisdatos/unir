@@ -1,0 +1,7 @@
+"0","# Limpiar caracteres especiales y descomponer en filas"
+"0","intereses_limpios <- datos %>%"
+"0","  mutate(interests = str_replace_all(interests, ""\\[|\\]|‘|’|'|\"""", """")) %>%  # elimina caracteres extraños"
+"0","  separate_rows(interests, sep = "",\\s*"") %>%                                 # divide por comas"
+"0","  mutate(interests = str_trim(interests)) %>%                                 # quita espacios"
+"0","  count(interests, sort = TRUE)                                               # cuenta ocurrencias"
+"0",""

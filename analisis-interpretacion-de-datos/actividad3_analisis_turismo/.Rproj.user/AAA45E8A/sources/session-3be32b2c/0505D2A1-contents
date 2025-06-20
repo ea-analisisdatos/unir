@@ -1,0 +1,320 @@
+---
+title: 
+date:
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    theme: flatly
+    highlight: textmate
+    df_print: paged
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+::: {style="text-align: center;"}
+![](https://lh3.googleusercontent.com/BLXjkjN6eamGIijhqBGH24JHAUaRIKXDY0V1s0n1VD2931EHhn2nCRyMp4iAMjrCmSmmF2qoBxKV4_J45PqpN_M2ULfqB6k8yRuYaL-PlTtnMWLIxvhsiLc408JU2Fm2vnMjZFiNcsA=w16383){alt="Logo UNIR"}
+
+<h1><b>Análisis Inferencial de la Satisfacción Turística</b></h1>
+
+<h4>Alumna: Erika Samara Alvares Angelim</h4>
+
+<h4>Profesor: Gustavo Néstor Fontana Riera</h4>
+
+<h4>Asignatura: Análisis e Interpretación de Datos</h4>
+
+<h4>Fecha: `r format(Sys.Date(), '%d de %B de %Y')`</h4>
+:::
+
+# Introducción
+
+Este cuaderno desarrolla la Actividad 3 del laboratorio de estadística
+inferencial. Se analizan dos situaciones aplicadas al sector turístico:
+
+-   Determinar si el nivel medio de satisfacción de los turistas supera
+    un valor de referencia.
+-   Evaluar si existe diferencia significativa entre grupos con y sin
+    accesibilidad.
+
+También se documentan las decisiones estadísticas y se justifica cada
+paso de análisis.
+
+------------------------------------------------------------------------
+
+# Configurar entorno
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+options(scipen = 999) # Evita notación científica
+```
+
+# Carga de paquetes necesarios
+
+Se utiliza `pacman` para instalar y cargar de forma más eficiente
+múltiples paquetes necesarios. Esta librería evita errores por
+duplicidad y permite mantener el código limpio.
+
+💡 Comentario técnico: Evitamos conflictos con library() y require().
+
+```{r cargar-paquetes}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, skimr, kableExtra, janitor, modeest, raster, moments, ggcorrplot, read_csv, ggplot2, dplyr, devtools, stringr)
+```
+
+# Carga y limpieza inicial de los datos
+
+## Cargar datos desde URL pública
+
+```{r carga-datos}
+url_datos <- "https://raw.githubusercontent.com/ea-analisisdatos/unir/refs/heads/main/datos/tourism_dataset_5000.csv"
+datos <- read_csv(url_datos)
+```
+
+## Visualizar primeras líneas del dataset original
+
+```{r ver-datos-original}
+head(datos, 5)
+```
+
+## Limpieza de nombres de columnas
+
+Este paso, `janitor` convierte los nombres compuestos de las columnas en
+formato snake_case, facilitando su uso en R.
+
+```{r limpiar-nombres}
+datos <- janitor::clean_names(datos)
+head(datos, 5)
+```
+
+# Estructura general del dataset
+
+```{r estructura-datos}
+glimpse(datos)
+```
+
+## Diccionario de datos
+
+```{r diccionario-datos}
+tribble(
+  ~Variable, ~Descripción,
+  "tourist_id", "Identificador único del turista",
+  "age", "Edad del turista",
+  "interests", "Temas de interés",
+  "preferred_tour_duration", "Duración preferida del tour (días)",
+  "accessibility", "Requiere accesibilidad (TRUE/FALSE)",
+  "site_name", "Nombre del sitio visitado",
+  "sites_visited", "Lista de sitios visitados",
+  "tour_duration", "Duración del tour realizado",
+  "route_id", "ID de la ruta turística",
+  "tourist_rating", "Valoración del turista (1-5)",
+  "system_response_time", "Tiempo de respuesta del sistema",
+  "recommendation_accuracy", "Precisión de recomendaciones (%)",
+  "vr_experience_quality", "Calidad de experiencia VR (1-5)",
+  "satisfaction", "Satisfacción general (1-5)"
+) %>%
+  kable(format = "html", caption = "Diccionario de datos") %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+## Verificación de tipos de variables
+
+```{r tabla-variables}
+tabla_variables <- tibble(
+  Variable = names(datos),
+  Tipo = sapply(datos, function(x) class(x)[1])
+)
+kable(tabla_variables, format = "html", caption = "Tipos de variables") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+# Evaluación de calidad y estadísticos descriptivos
+
+## Verificar valores nulos
+
+```{r verificar-nulos}
+colSums(is.na(datos))
+```
+
+## Resumen general con skimr
+
+```{r resumen-dataset}
+skim(datos)
+```
+
+Observaciones:
+
+-   La variable satisfaction tiene una media de aproximadamente 3.53,
+    con moda 3.
+
+-   No existen valores faltantes.
+
+-   La variable tourist_rating presenta correlación fuerte con
+    satisfaction.
+
+------------------------------------------------------------------------
+
+# **Parte 1: ¿La satisfacción media es significativamente mayor que 3?**
+
+Aquí se analiza si la satisfacción media de los turistas supera el
+umbral de 3 puntos, considerado como un valor positivo.
+
+## Contexto del problema
+
+Se analiza la satisfacción general de los turistas utilizando una escala
+de 1 a 5. Se desea verificar si la media poblacional supera el umbral de
+3 puntos, valor considerado como referencia para experiencias positivas
+en este dataset.
+
+\$\$μ0​=1+5​/2=3\$
+
+## Justificación estadística
+
+Se aplicará una prueba t de una muestra, que evalúa si la media muestral
+difiere significativamente de un valor de referencia (μ₀ = 3).
+
+**Hipótesis:**
+
+-   **H₀: μ ≤ 3** (la satisfacción media no supera 3)
+
+-   **H₁: μ \> 3** (la satisfacción media es superior a 3)
+
+## Análisis descriptivo y gráfico
+
+```{r resumen-satisfaccion}
+summary(datos$satisfaction)
+```
+
+### Visualización
+
+```{r histograma-satisfaccion}
+ggplot(datos, aes(x = satisfaction)) +
+  geom_histogram(bins = 15, fill = "steelblue", color = "white") +
+  geom_vline(xintercept = 3, linetype = "dashed", color = "red") +
+  labs(title = "Distribución de la satisfacción turística", x = "Satisfacción", y = "Frecuencia")
+```
+
+Observación: - La mayoría de valores están entre 3 y 4. La distribución
+está sesgada hacia valores bajos. - La media de satisfacción es de
+aproximadamente 3.53, con una desviación estándar de 1.12.
+
+## Contraste de hipótesis
+
+```{r test-t-una-muestra}
+t.test(datos$satisfaction, mu = 3, alternative = "greater")
+```
+
+## Interpretación técnica
+
+-   El **test t** muestra que la media observada es {r
+    round(mean(datos\$satisfaction), 2)}.
+-   El **p-valor** es `r signif(t.test(datos\$satisfaction, mu = 3,
+    alternative = "greater")\$p.value, 4)`, por lo tanto no se rechaza
+    **H₀**.
+-   **No existe evidencia de que la satisfacción media sea superior a
+    3.**
+
+------------------------------------------------------------------------
+
+# **Parte 2: ¿Existen diferencias según accesibilidad?**
+
+## Contexto del problema
+
+Se analiza si hay diferencias significativas entre turistas con
+necesidades de accesibilidad frente a quienes no requieren
+accesibilidad. Se comparan los valores medios de satisfacción entre
+estos dos grupos.
+
+**Hipótesis:**
+
+-   **H₀: μ₁ = μ₂** (no hay diferencia entre ambos grupos)
+
+-   **H₁: μ₁ ≠ μ₂** (existe diferencia significativa)
+
+## Agrupamiento y estadísticos
+
+Preparación de los grupos
+
+```{r crear-grupos}
+datos <- datos %>%
+  mutate(grupo = ifelse(accessibility, "Accesibilidad", "Sin Accesibilidad"))
+```
+
+## Resumen estadístico por grupo
+
+```{r estadisticas-grupo}
+datos %>%
+  group_by(grupo) %>%
+  summarise(media = mean(satisfaction), sd = sd(satisfaction), n = n())
+```
+
+## Visualización comparativa
+
+```{r boxplot-satisfaccion}
+ggplot(datos, aes(x = grupo, y = satisfaction, fill = grupo)) +
+  geom_boxplot() +
+  labs(title = "Satisfacción por accesibilidad", x = "Grupo", y = "Satisfacción")
+```
+
+Observación: - Ambos grupos muestran medias similares, y rangos
+cercanos. No hay indicios gráficos de diferencia significativa.
+
+## Contraste de hipótesis
+
+```{r test-t-dos-grupos}
+t.test(satisfaction ~ grupo, data = datos)
+```
+
+## Interpretación técnica
+
+El **p-valor** = r signif(t.test(satisfaction \~ grupo, data =
+datos)\$p.value, 4) → no se rechaza **H₀**. **No hay diferencia
+significativa entre los grupos con y sin accesibilidad.**
+
+# Análisis complementario: correlaciones
+
+```{r correlaciones, fig.width=7, fig.height=6}
+datos_numeric <- datos %>% select_if(is.numeric)
+cor_matrix <- cor(datos_numeric, use = "complete.obs")
+ggcorrplot(cor_matrix,
+           hc.order = TRUE,
+           type = "lower",
+           lab = TRUE,
+           lab_size = 3,
+           colors = c("tomato2", "white", "springgreen3"),
+           title = "Mapa de calor de correlaciones",
+           ggtheme = theme_minimal())
+```
+
+Interpretación: - tourist_rating y satisfaction tienen una alta
+correlación positiva (≈ 0.85). - Otras variables muestran correlaciones
+débiles.
+
+# Conclusiones
+
+-   La satisfacción media de los turistas no supera el umbral de 7, lo
+    que indica que la experiencia general es mejorable.
+-   No se encontraron diferencias significativas entre turistas con y
+    sin necesidades de accesibilidad, sugiriendo que ambos grupos tienen
+    experiencias similares.
+
+# Exportación del dataset limpio
+
+```{r exportar-dataset}
+write_csv(datos, "tourism_dataset_5000_limpio.csv")
+```
+
+# Referencias
+
+-   Boone, H. N., & Boone, D. A. (2012). *Analyzing Likert Data*.
+    Journal of Extension.
+
+-   Joshi, A., Kale, S., Chandel, S., & Pal, D. K. (2015). [*Likert
+    Scale: Explored and
+    Explained*](https://journalcjast.com/index.php/CJAST/article/view/381 "Ir a la fuente").
+    British Journal of Applied Science & Technology.
+
+-   Montgomery, D. C., & Runger, G. C. (2014). *Probabilidad y
+    estadística aplicada a la ingeniería*. Wiley.

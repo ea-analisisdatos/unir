@@ -1,0 +1,5 @@
+"0",""
+"0",""
+"0","# Guardar la gráfica en archivo PNG "
+"0","ggsave(""grafico-barras-vr_experience_quality.png"", width = 8, height = 5, dpi = 300)"
+"0",""

@@ -1,0 +1,7 @@
+"0","datos_expandido <- datos %>%"
+"0","  mutate(interests = str_replace_all(interests, ""\\[|\\]|‘|’|'|\"""", """")) %>%"
+"0","  separate_rows(interests, sep = "",\\s*"") %>%"
+"0","  mutate(interests = str_trim(interests)) %>%"
+"0","  mutate(grupo = ifelse(accessibility, ""Accesibilidad"", ""Sin Accesibilidad""))"
+"0",""
+"0","head(datos_expandido, 5) # mostra las primeras 5 filas del dataframe"

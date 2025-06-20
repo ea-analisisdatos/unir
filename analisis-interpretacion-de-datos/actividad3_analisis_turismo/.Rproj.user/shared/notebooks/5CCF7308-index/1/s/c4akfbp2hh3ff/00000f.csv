@@ -1,0 +1,2 @@
+"0","datos <- datos %>%"
+"0","  mutate(route_id = as.factor(route_id))"

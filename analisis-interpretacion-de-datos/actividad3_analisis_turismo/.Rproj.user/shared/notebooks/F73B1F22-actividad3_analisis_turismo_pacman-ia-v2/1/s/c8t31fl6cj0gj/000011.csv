@@ -1,0 +1,9 @@
+"0","# Crear variable categórica para comparar nacionales e internacionales"
+"0","datos <- datos %>%"
+"0","  mutate(grupo = ifelse(country == ""Kenya"", ""Nacional"", ""Internacional""))"
+"1","[1m[33mError[39m in `mutate()`:[22m
+[38;5;232m[36mℹ[38;5;232m In argument: `grupo = ifelse(country == ""Kenya"", ""Nacional"", ""Internacional"")`.[39m
+[1mCaused by error:[22m
+[33m![39m objeto 'country' no encontrado
+[90mRun `]8;;x-r-run:rlang::last_trace()rlang::last_trace()]8;;` to see where the error occurred.[39m
+"

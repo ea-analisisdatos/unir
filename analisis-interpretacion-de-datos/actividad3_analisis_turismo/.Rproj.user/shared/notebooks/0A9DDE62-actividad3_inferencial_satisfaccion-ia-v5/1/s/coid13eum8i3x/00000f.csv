@@ -1,0 +1,8 @@
+"0","datos <- datos %>%"
+"0","  mutate(route_id = as.factor(route_id))"
+"1","[1m[33mError[39m in `mutate()`:[22m
+[38;5;232m[36mℹ[38;5;232m In argument: `route_id = as.factor(route_id)`.[39m
+[1mCaused by error in `h()`:[22m
+[33m![39m error al evaluar el argumento 'x' al seleccionar un método para la función 'as.factor': objeto 'route_id' no encontrado
+[90mRun `]8;;x-r-run:rlang::last_trace()rlang::last_trace()]8;;` to see where the error occurred.[39m
+"

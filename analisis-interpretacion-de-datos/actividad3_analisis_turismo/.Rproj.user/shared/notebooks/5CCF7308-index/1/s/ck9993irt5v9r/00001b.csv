@@ -1,0 +1,8 @@
+"0","# Descomponer los sitios visitados"
+"0","sitios_limpios <- datos %>%"
+"0","  mutate(sites_visited = str_replace_all(sites_visited, ""\\[|\\]|‘|’|'|\"""", """")) %>%"
+"0","  separate_rows(sites_visited, sep = "",\\s*"") %>%"
+"0","  mutate(sites_visited = str_trim(sites_visited)) %>%"
+"0","  count(sites_visited, sort = TRUE)"
+"0",""
+"0","head(sitios_limpios, 5) # presenta las primeras 5 filas del dataframe"

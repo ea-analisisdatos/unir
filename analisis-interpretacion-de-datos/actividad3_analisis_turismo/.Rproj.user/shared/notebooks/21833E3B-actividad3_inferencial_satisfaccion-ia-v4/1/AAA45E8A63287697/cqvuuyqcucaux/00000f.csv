@@ -1,0 +1,2 @@
+"0","datos <- datos %>%"
+"0","  mutate(grupo = ifelse(accessibility, ""Accesibilidad"", ""Sin Accesibilidad""))"

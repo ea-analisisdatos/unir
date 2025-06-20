@@ -1,0 +1,3 @@
+"0",""
+"0","# Guardar la gráfica en archivo PNG "
+"0","ggsave(""grafico_interes_accesibilidad.png"", width = 8, height = 5, dpi = 300)"

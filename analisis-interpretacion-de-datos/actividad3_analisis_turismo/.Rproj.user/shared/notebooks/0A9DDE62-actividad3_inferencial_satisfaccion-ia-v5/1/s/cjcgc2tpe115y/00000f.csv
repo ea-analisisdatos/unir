@@ -1,0 +1,2 @@
+"0","datos <- datos %>%"
+"0","  mutate(tourist_id = as.factor(tourist_id))"

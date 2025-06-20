@@ -1,0 +1,8 @@
+"0","# Descomponer la columna de intereses en múltiples columnas"
+"0","library(stringr)"
+"0","intereses_expandidos <- datos %>%"
+"0","  separate_rows(interests, sep = "", "") %>%"
+"0","  count(interests, sort = TRUE)"
+"0",""
+"0","kable(intereses_expandidos, caption = ""Frecuencia de intereses turísticos"") %>%"
+"0","  kable_styling()"

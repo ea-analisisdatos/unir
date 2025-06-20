@@ -1,0 +1,5 @@
+"0","write_csv(datos, ""tourism_dataset_5000_limpio.csv"")"
+"0",""
+"0","# Generar el archivo index.html: pega esta linea de codigo en la consola:"
+"0","# rmarkdown::render(""actividad3_inferencial_satisfaccion-ia-v5.Rmd"", output_file = ""index.html"")"
+"0",""

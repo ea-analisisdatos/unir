@@ -1,0 +1,5 @@
+"0",""
+"0","# Guardar la gráfica en archivo PNG "
+"0","ggsave(""grafica-top-10-sitios-visitados.png"", width = 8, height = 5, dpi = 300)"
+"2","Error en gzfile(file, ""wb""): no se puede abrir la conexión
+"

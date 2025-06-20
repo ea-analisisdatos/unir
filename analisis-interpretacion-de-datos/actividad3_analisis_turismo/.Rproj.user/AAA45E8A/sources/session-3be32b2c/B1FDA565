@@ -1,0 +1,33 @@
+{
+    "id": "B1FDA565",
+    "path": "~/github/unir/analisis-interpretacion-de-datos/Actividad3/actividad3_analisis_turismo/index.Rmd",
+    "project_path": "index.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1750361610827.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "647,16",
+        "scrollLine": "639",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "23644:14414.544921875",
+        "rmdVisualCollapsedChunks": "",
+        "last_setup_crc32": "3be32b2ce200dc4a",
+        "docOutlineSize": "208"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1750363321,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1750363321242,
+    "read_only": false,
+    "read_only_alternatives": []
+}

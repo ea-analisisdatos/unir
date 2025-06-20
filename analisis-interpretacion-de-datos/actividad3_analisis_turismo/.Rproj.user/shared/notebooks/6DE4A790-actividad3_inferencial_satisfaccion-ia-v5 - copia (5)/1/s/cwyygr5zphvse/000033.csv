@@ -1,0 +1,2 @@
+"0","kable(intereses_limpios, caption = ""Frecuencia de intereses turísticos (limpios)"") %>%"
+"0","  kable_styling(full_width = FALSE, bootstrap_options = c(""striped"", ""hover""))"

@@ -1,4 +1,3 @@
-"0",""
-"0","# Guardar la gráfica en archivo PNG"
-"0","ggsave(""boxplot-satisfaccion.png"", width = 8, height = 5, dpi = 300)"
-"0",""
+version https://git-lfs.github.com/spec/v1
+oid sha256:029942db45fa153f842f8d923e908cef942787fb30661123a5ae515d9b11229c
+size 138

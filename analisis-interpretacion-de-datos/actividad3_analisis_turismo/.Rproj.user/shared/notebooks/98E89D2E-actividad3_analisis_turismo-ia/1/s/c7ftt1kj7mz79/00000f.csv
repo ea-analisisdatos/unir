@@ -1,2 +1,3 @@
-"0","url_datos <- ""https://raw.githubusercontent.com/ea-analisisdatos/unir/refs/heads/main/datos/tourism_dataset_5000.csv"""
-"0","datos <- read_csv(url_datos)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:1303ff635963ce6322efd144c4df900e4305a5de8e34e8602e5ecfad38870319
+size 163

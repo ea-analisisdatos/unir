@@ -1,8 +1,3 @@
-"0","# Descomponer la columna de intereses en múltiples columnas"
-"0","library(stringr)"
-"0","intereses_expandidos <- datos %>%"
-"0","  separate_rows(interests, sep = "", "") %>%"
-"0","  count(interests, sort = TRUE)"
-"0",""
-"0","kable(intereses_expandidos, caption = ""Frecuencia de intereses turísticos"") %>%"
-"0","  kable_styling()"
+version https://git-lfs.github.com/spec/v1
+oid sha256:01b0e1ff9fa57d3a3c8ce6a065cb85131c78fbee6d948c3d62562289f629b4f8
+size 347

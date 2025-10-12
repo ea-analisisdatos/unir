@@ -1,4 +1,3 @@
-"0","ggplot(datos, aes(x = recommendation_accuracy)) +"
-"0","  geom_histogram(binwidth = 5, fill = ""darkgreen"", color = ""white"") +"
-"0","  labs(title = ""Precisión del sistema de recomendación"", x = ""Porcentaje (%)"", y = ""Frecuencia"")"
-"0",""
+version https://git-lfs.github.com/spec/v1
+oid sha256:2be2a11ab6fc67633643aa8748916cbbce40a2fe65c4f83ad929dae9d1eaa520
+size 258

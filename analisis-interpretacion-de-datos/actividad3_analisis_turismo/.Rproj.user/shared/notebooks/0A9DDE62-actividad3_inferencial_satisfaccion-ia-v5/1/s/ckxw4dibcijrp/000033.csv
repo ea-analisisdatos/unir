@@ -1,10 +1,3 @@
-"0","# Resumen estadístico por grupo de edad"
-"0","datos %>%"
-"0","  group_by(grupo_edad) %>%"
-"0","  summarise("
-"0","    media_satisfaccion = round(mean(satisfaction, na.rm = TRUE), 2),"
-"0","    n = n()"
-"0","  ) %>%"
-"0","  arrange(desc(media_satisfaccion)) %>%"
-"0","  kable(caption = ""Satisfacción media por grupo de edad"") %>%"
-"0","  kable_styling(full_width = FALSE)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:e51deb89b565e09795592eede8dd7b7a3e9ec4a901d65b5fafb91a612713bb48
+size 391

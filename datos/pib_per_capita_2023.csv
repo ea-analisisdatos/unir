@@ -1,11 +1,3 @@
-Country,ISO_Code,GDP_per_capita_2023
-Germany,DE,51300
-France,FR,44200
-Italy,IT,37900
-United Kingdom,GB,48700
-United States,US,80500
-Canada,CA,56200
-Japan,JP,42600
-Brazil,BR,9800
-India,IN,2500
-China,CN,12700
+version https://git-lfs.github.com/spec/v1
+oid sha256:d183e76547753d18939c98f78456b6390bf33fe2d3fd642bc6f448a72c1b4cf4
+size 218

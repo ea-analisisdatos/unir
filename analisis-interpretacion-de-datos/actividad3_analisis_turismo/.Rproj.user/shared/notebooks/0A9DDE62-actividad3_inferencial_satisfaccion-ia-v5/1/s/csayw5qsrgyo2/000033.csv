@@ -1,4 +1,3 @@
-"0","ggplot(intereses_limpios, aes(x = reorder(interests, n), y = n)) +"
-"0","  geom_col(fill = ""steelblue"") +"
-"0","  coord_flip() +"
-"0","  labs(title = ""Frecuencia de intereses turísticos"", x = ""Interés"", y = ""Frecuencia"")"
+version https://git-lfs.github.com/spec/v1
+oid sha256:522de6d3013991854ac3243f530e570f83abdda70fa923effa0a40d52ef4f41d
+size 241

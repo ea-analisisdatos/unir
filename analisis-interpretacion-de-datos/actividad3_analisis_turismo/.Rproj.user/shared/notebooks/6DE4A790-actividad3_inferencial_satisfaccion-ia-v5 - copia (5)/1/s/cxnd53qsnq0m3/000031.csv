@@ -1,5 +1,3 @@
-"0","# Gráfico de barras de vr_experience_quality"
-"0","ggplot(datos, aes(x = factor(vr_experience_quality))) +"
-"0","  geom_bar(fill = ""orange"") +"
-"0","  labs(title = ""Distribución de Calidad de la Experiencia VR"", x = ""VR Quality"", y = ""Frecuencia"")"
-"0",""
+version https://git-lfs.github.com/spec/v1
+oid sha256:813570178173bf4b7ab763622448899193514b16c36758556881a3b28a10d058
+size 276

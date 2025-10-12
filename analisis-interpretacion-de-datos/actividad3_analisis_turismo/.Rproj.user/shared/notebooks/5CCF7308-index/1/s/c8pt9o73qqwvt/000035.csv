@@ -1,5 +1,3 @@
-"0",""
-"0",""
-"0","# Guardar la gráfica en archivo PNG "
-"0","ggsave(""grafico-barras-recommendation_accuracy.png"", width = 8, height = 5, dpi = 300)"
-"0",""
+version https://git-lfs.github.com/spec/v1
+oid sha256:49cbdd2b7e8a99c58bc8843b2ba9361040153e5bfaeb17785a4635f0898cbc45
+size 165

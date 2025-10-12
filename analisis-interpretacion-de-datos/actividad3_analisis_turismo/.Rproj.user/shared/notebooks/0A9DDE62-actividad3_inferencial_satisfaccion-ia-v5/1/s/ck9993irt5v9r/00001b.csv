@@ -1,8 +1,3 @@
-"0","# Descomponer los sitios visitados"
-"0","sitios_limpios <- datos %>%"
-"0","  mutate(sites_visited = str_replace_all(sites_visited, ""\\[|\\]|‘|’|'|\"""", """")) %>%"
-"0","  separate_rows(sites_visited, sep = "",\\s*"") %>%"
-"0","  mutate(sites_visited = str_trim(sites_visited)) %>%"
-"0","  count(sites_visited, sort = TRUE)"
-"0",""
-"0","head(sitios_limpios, 5) # presenta las primeras 5 filas del dataframe"
+version https://git-lfs.github.com/spec/v1
+oid sha256:de5e1359691084060a61ee6a2d64323039a76ae17cef36bd35796b3331db4306
+size 426

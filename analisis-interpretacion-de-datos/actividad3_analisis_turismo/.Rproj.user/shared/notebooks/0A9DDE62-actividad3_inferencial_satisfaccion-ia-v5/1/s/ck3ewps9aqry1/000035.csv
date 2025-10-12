@@ -1,19 +1,3 @@
-"0",""
-"0","# Seleccionar variables numéricas"
-"0","datos_numeric <- datos %>% select_if(is.numeric)"
-"0",""
-"0","# Calcular matriz de correlación"
-"0","cor_matrix <- cor(datos_numeric, use = ""complete.obs"")"
-"0",""
-"0","# Crear mapa de calor con corrplot"
-"0","corrplot(cor_matrix,"
-"0","         method = ""color"","
-"0","         type = ""lower"","
-"0","         order = ""hclust"", # ordena por similitud"
-"0","         tl.col = ""black"", # color etiquetas"
-"0","         tl.cex = 0.8,     # tamaño etiquetas"
-"0","         tl.srt = 45,      # inclinación"
-"0","         addCoef.col = ""black"", # valores de correlación"
-"0","         col = colorRampPalette(c(""red"", ""white"", ""green""))(200),"
-"0","         title = ""Mapa de calor de correlaciones (corrplot)"","
-"0","         mar = c(1, 1, 1, 1))  # márgenes"
+version https://git-lfs.github.com/spec/v1
+oid sha256:7e85b1d4307b647a93106602191611c92beb4ea8877a73a59e9abd1924cbf987
+size 850

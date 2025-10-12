@@ -1,7 +1,3 @@
-"0","# Instalar pacman si no está disponible"
-"0","if (!requireNamespace(""pacman"", quietly = TRUE)) install.packages(""pacman"")"
-"0",""
-"0","# Usar pacman para instalar y cargar todos los paquetes requeridos"
-"0","pacman::p_load("
-"0","  tidyverse, skimr, ggplot2, readr, kableExtra, janitor"
-"0",")"
+version https://git-lfs.github.com/spec/v1
+oid sha256:12a8a3e2f4e1474105cf4e9202cebcc79955dccd1a571ed973224302c81ebd3b
+size 312

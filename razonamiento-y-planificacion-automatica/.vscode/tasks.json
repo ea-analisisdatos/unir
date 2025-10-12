@@ -1,29 +1,3 @@
-{
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Ejecutar LiSAT",
-      "type": "shell",
-      "command": "./lisat",
-      "args": [
-        "-d",
-        "${workspaceFolder}/domain.pddl",
-        "-p",
-        "${workspaceFolder}/problem.pddl",
-        "-l",
-        "50"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": []
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8dd98ece440a7830c365876bf6b5737f59d37dfbf6f63c38294ee1255e2e9887
+size 570

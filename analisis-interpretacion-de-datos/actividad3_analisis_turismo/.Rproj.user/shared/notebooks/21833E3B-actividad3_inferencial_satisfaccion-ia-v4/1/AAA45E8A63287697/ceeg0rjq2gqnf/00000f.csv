@@ -1,18 +1,3 @@
-"0","# Cargar librería"
-"0","library(ggcorrplot)"
-"0",""
-"0","# Seleccionar solo variables numéricas"
-"0","datos_numeric <- datos %>% select_if(is.numeric)"
-"0",""
-"0","# Calcular la matriz de correlación"
-"0","cor_matrix <- cor(datos_numeric, use = ""complete.obs"")"
-"0",""
-"0","# Mapa de calor de las correlaciones"
-"0","ggcorrplot(cor_matrix,"
-"0","           hc.order = TRUE,"
-"0","           type = ""lower"","
-"0","           lab = TRUE,"
-"0","           lab_size = 2.5,"
-"0","           colors = c(""tomato2"", ""white"", ""springgreen3""),"
-"0","           title = ""Mapa de calor de correlaciones"","
-"0","           ggtheme = theme_minimal())"
+version https://git-lfs.github.com/spec/v1
+oid sha256:f50f0c0e091191aadcae56ea3d23dec114401f366c9a673eba8556d4918f3f04
+size 676

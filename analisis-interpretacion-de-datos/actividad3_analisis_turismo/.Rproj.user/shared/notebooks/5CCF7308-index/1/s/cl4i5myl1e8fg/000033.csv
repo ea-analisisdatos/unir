@@ -1,7 +1,3 @@
-"0","datos_expandido <- datos %>%"
-"0","  mutate(interests = str_replace_all(interests, ""\\[|\\]|‘|’|'|\"""", """")) %>%"
-"0","  separate_rows(interests, sep = "",\\s*"") %>%"
-"0","  mutate(interests = str_trim(interests)) %>%"
-"0","  mutate(grupo = ifelse(accessibility, ""Accesibilidad"", ""Sin Accesibilidad""))"
-"0",""
-"0","head(datos_expandido, 5) # mostra las primeras 5 filas del dataframe"
+version https://git-lfs.github.com/spec/v1
+oid sha256:0bf9fc46500280af47753df7da5911a021349e85e14b507997726d3841a78eba
+size 410

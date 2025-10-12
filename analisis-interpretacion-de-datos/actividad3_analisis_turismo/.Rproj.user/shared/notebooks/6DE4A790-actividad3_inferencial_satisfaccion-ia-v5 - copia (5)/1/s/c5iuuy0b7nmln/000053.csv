@@ -1,10 +1,3 @@
-"0","tabla_interes_satisfaccion <- datos_expandido %>%"
-"0","  group_by(interests) %>%"
-"0","  summarise("
-"0","    media_satisfaccion = round(mean(satisfaction, na.rm = TRUE), 2),"
-"0","    n = n()"
-"0","  ) %>%"
-"0","  arrange(desc(media_satisfaccion))"
-"0",""
-"0","kable(tabla_interes_satisfaccion, caption = ""Media de satisfacción por interés turístico"") %>%"
-"0","  kable_styling(full_width = FALSE)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:cc93e187f8520b15b2cc07842f8f1a51350dc78027b764d6a7cf21742113b764
+size 421

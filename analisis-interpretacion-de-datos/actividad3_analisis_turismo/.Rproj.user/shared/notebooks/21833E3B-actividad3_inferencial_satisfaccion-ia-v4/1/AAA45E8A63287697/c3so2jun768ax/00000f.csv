@@ -1,13 +1,3 @@
-"0","# Cargar de paquetes necesarios"
-"0","library(tidyverse)"
-"0","library(skimr)"
-"0","library(ggplot2)"
-"0","library(readr)"
-"0","library(kableExtra)"
-"0","library(janitor)"
-"0","library(GGally)"
-"0","library(ggcorrplot)"
-"0",""
-"0","library(modeest) #moda"
-"0","library(raster) #quantiles, coeficiente de variacion (vc)"
-"0","library(moments) #asimetría, curtosis"
+version https://git-lfs.github.com/spec/v1
+oid sha256:35587d1a688f073b741ac29556aac57b73572cb4eb9460f4f0e2e951138071e8
+size 383

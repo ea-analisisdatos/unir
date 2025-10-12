@@ -1,25 +1,3 @@
-"0","skim(datos)"
-"1","── Data Summary ────────────────────────
-"
-"1","                           Values
-"
-"1","Name                       datos 
-"
-"1","Number of rows             5000  
-"
-"1","Number of columns          14    
-"
-"1","_______________________          
-"
-"1","Column type frequency:           
-"
-"1","  character                3     
-"
-"1","  logical                  1     
-"
-"1","  numeric                  10    
-"
-"1","________________________         
-"
-"1","Group variables            None  
-"
+version https://git-lfs.github.com/spec/v1
+oid sha256:e7586102d8be2e7e4f12c3d02299823bf57b42d868f83c3314d8e36fc91fe680
+size 594

@@ -1,3 +1,3 @@
-"0",""
-"0","par(mfrow = c(1,1))"
-"0","hist(X)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:f6a0ee9833ed72d67e22c08b2e6dad78421af92aa5354808a11fa9e4d3ccf71a
+size 50

@@ -1,6 +1,3 @@
-"0","tabla_variables <- tibble("
-"0","  Variable = names(datos),"
-"0","  Tipo = sapply(datos, function(x) class(x)[1])"
-"0",")"
-"0","kable(tabla_variables, format = ""html"", caption = ""Tipos de variables del dataset de turismo"") %>%"
-"0","  kable_styling(full_width = FALSE, bootstrap_options = c(""striped"", ""hover"", ""condensed""))"
+version https://git-lfs.github.com/spec/v1
+oid sha256:679535771481c1785ae21eecdc079c573e12b04b1aa04de0f446725571ded64e
+size 347

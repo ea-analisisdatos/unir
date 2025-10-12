@@ -1,11 +1,3 @@
-"0","### Medidas de Asimetría"
-"0","skewness(X) #Aimetría"
-"1","[1]"
-"1"," 0.9837511"
-"1","
-"
-"0","kurtosis(X)"
-"1","[1]"
-"1"," 2.512423"
-"1","
-"
+version https://git-lfs.github.com/spec/v1
+oid sha256:6a5f3fd4ec369c3db34feb583369f2c481b677d253e064e7d286bceb613df18b
+size 159

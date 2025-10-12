@@ -1,15 +1,3 @@
-"0","# Conteo por tipo de variable"
-"0","map_chr(datos, class) %>% "
-"0","  table()"
-"1",".
-"
-"1","character "
-"1","  logical "
-"1","  numeric "
-"1","
-"
-"1","        3 "
-"1","        1 "
-"1","       10 "
-"1","
-"
+version https://git-lfs.github.com/spec/v1
+oid sha256:ecde6a6d45a8e19565854aa7b5cca6a9693f095e2a2276e8d667797396b60853
+size 227

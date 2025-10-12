@@ -1,4 +1,3 @@
-"0","ggplot(tabla_interes_satisfaccion, aes(x = reorder(interests, media_satisfaccion), y = media_satisfaccion)) +"
-"0","  geom_col(fill = ""forestgreen"") +"
-"0","  coord_flip() +"
-"0","  labs(title = ""Satisfacción media por tipo de interés"", x = ""Interés"", y = ""Media de satisfacción"")"
+version https://git-lfs.github.com/spec/v1
+oid sha256:e7461f02a9e68405b7e5be8552175ae08dbd8e0096b89c04135096a1b1801268
+size 303

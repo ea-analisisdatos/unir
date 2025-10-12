@@ -1,26 +1,3 @@
-"0","# Generar estadísticas descriptivas generales"
-"0","skim(datos)"
-"1","── Data Summary ────────────────────────
-"
-"1","                           Values
-"
-"1","Name                       datos 
-"
-"1","Number of rows             5000  
-"
-"1","Number of columns          14    
-"
-"1","_______________________          
-"
-"1","Column type frequency:           
-"
-"1","  character                3     
-"
-"1","  logical                  1     
-"
-"1","  numeric                  10    
-"
-"1","________________________         
-"
-"1","Group variables            None  
-"
+version https://git-lfs.github.com/spec/v1
+oid sha256:7f42e3ba5a415ab84f43bb7ad680fc765d386ca3b38ec6e19a9e04680d0aef97
+size 648

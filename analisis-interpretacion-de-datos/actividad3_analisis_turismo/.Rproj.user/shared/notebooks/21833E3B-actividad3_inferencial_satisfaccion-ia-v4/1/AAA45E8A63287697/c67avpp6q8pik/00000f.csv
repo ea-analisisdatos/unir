@@ -1,16 +1,3 @@
-"0","### Medidas de Dispersión"
-"0","var(X) #varianza es cuanto los valores se desplazan con base a la media, siempre será un numero positivo porque estos valores se elevan al cuadrado"
-"1","[1]"
-"1"," 0.5417387"
-"1","
-"
-"0","sd(X) #desviación tipica se vuelve a dimensión original se quita el cuadrado que hemos usado en la variaza. "
-"1","[1]"
-"1"," 0.736029"
-"1","
-"
-"0","cv(X) #coeficiente de variación"
-"1","[1]"
-"1"," 20.8259"
-"1","
-"
+version https://git-lfs.github.com/spec/v1
+oid sha256:04f83e36a34ee3bfba9f7ee4e57b870e4732c8ac83dc0634eabee6b0f7373369
+size 462

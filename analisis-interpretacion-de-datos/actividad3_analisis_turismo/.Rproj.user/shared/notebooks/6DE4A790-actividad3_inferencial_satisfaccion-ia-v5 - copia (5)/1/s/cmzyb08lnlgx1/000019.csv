@@ -1,3 +1,3 @@
-"0","ggplot(datos, aes(x = grupo, y = satisfaction, fill = grupo)) +"
-"0","  geom_boxplot() +"
-"0","  labs(title = ""Satisfacción por accesibilidad"", x = ""Grupo"", y = ""Satisfacción"")"
+version https://git-lfs.github.com/spec/v1
+oid sha256:faaa90b23bf8e6f5700eddc19f32d9bd463ee62ef3ba0a6535f888cebc8bbbb9
+size 194

@@ -1,4 +1,3 @@
-"0",""
-"0","# Guardar la gráfica en archivo PNG"
-"0","ggsave(""histograma-satisfaccion.png"", width = 8, height = 5, dpi = 300)"
-"0",""
+version https://git-lfs.github.com/spec/v1
+oid sha256:261074582572fb33a0fe72c49bbd74792102b89818f9ad85e06b53636a368c60
+size 141

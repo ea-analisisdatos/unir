@@ -1,2 +1,3 @@
-"0","if (!requireNamespace(""pacman"", quietly = TRUE)) install.packages(""pacman"")"
-"0","pacman::p_load(tidyverse, skimr, ggplot2, readr, kableExtra, janitor, GGally, dplyr, devtools, stringr, randomForest)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:83027354f7234c7fdaa2e4bc76f4e4f6b1fc30137bad55df1bf19278c493e60e
+size 212
